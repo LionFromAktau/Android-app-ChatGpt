@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.sp
 import kz.edu.sdu.income.R
 import kz.edu.sdu.income.ui.theme.IncomeTheme
 
+
 class MainScreen: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

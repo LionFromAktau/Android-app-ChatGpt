@@ -153,6 +153,7 @@ class PayCheckScreen : ComponentActivity() {
         )
     }
 
+
         @Composable
         fun bottomButtons(){
             Row {

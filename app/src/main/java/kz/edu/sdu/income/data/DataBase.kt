@@ -297,6 +297,7 @@ class DataBase{
             hoursWorkedPerWeek = 40
         ),
 
+
         State(
             stateId = 22,
             stateName = "Michigan",
