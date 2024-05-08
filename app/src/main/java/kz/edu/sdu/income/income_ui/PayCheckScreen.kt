@@ -36,31 +36,30 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import kz.edu.sdu.income.R
 import kz.edu.sdu.income.ui.theme.IncomeTheme
+import kz.edu.sdu.income.viewModel.IncomeViewModel
 
-class PayCheckScreen : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            IncomeTheme {
-                Surface {
-                    PayCheckApp()
-                }
-            }
+@Composable
+fun PayCheckScreen (navController: NavController, viewModel: IncomeViewModel){
+    IncomeTheme {
+        Surface {
+            PayCheckApp(navController = navController, viewModel = viewModel)
         }
     }
+}
 
-    @Preview(showSystemUi = true)
     @Composable
-    fun PayCheckApp() {
-        val grossPayCheck by remember{ mutableStateOf("1000.00")}
-        val federalTax by remember { mutableStateOf("50.00") }
-        val stateTax by remember { mutableStateOf("100.00") }
-        val tipsTax by remember { mutableStateOf("50.00") }
-        val rent by remember { mutableStateOf("250.00") }
-        val foodExpense by remember { mutableStateOf("150.00") }
-        val netPaycheck by remember { mutableStateOf("999.00") }
+    fun PayCheckApp(navController: NavController, viewModel: IncomeViewModel) {
+        val grossPayCheck by viewModel.grossPaycheckPerWeek
+        val federalTax by viewModel.calculatedFederalTax
+        val stateTax by viewModel.calculatedStateTax
+        val tipsTax by viewModel.calculatedTipsTax
+        val rent by viewModel.rent
+        val foodExpense by viewModel.foodExpense
+        val netPaycheck by viewModel.calculatedNetPaycheckPerWeek
+        val netPaycheckOverall by viewModel.calculatedNetPaycheckOverall
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -78,7 +77,7 @@ class PayCheckScreen : ComponentActivity() {
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    BackButton()
+                    BackButton(navController)
                     Spacer(modifier = Modifier.padding(top = 30.dp))
                     Text(
                         text = "Paycheck",
@@ -96,22 +95,22 @@ class PayCheckScreen : ComponentActivity() {
                 modifier = Modifier.fillMaxWidth(),
             ) {
                 Spacer(modifier = Modifier.padding(top=40.dp))
-                PayCheckRow( "Gross Paycheck", grossPayCheck)
+                PayCheckRow( "Gross Paycheck", grossPayCheck.toString())
                 Spacer(modifier = Modifier.padding(top = 30.dp))
-                PayCheckRow( "Federal Tax", federalTax)
+                PayCheckRow( "Federal Tax", federalTax.toString())
                 Spacer(modifier = Modifier.padding(top=15.dp))
-                PayCheckRow(  "State Tax", stateTax)
+                PayCheckRow(  "State Tax", stateTax.toString())
                 Spacer(modifier = Modifier.padding(top=15.dp))
-                PayCheckRow(  "Tips Tax", tipsTax)
+                PayCheckRow(  "Tips Tax", tipsTax.toString())
                 Spacer(modifier = Modifier.padding(top=15.dp))
                 PayCheckRow( "Food Expense", foodExpense)
                 Spacer(modifier = Modifier.padding(top=15.dp))
                 PayCheckRow( "Rent", rent)
                 Spacer(modifier = Modifier.padding(top = 50.dp))
-                PayCheckRow( "Net Paycheck", netPaycheck)
+                PayCheckRow( "Net Gross", netPaycheck.toString())
+                Spacer(modifier = Modifier.padding(top = 25.dp))
+                PayCheckRow( "Overall Net Gross", netPaycheckOverall.toString())
             }
-            Spacer(modifier = Modifier.padding(top = 80.dp))
-            bottomButtons()
         }
     }
 
@@ -120,6 +119,7 @@ class PayCheckScreen : ComponentActivity() {
          text : String,
          value : String
     ){
+        val formatedValue = formatToTwoDecimalPlaces(value.toDouble())
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -135,7 +135,7 @@ class PayCheckScreen : ComponentActivity() {
                 .padding(end = 30.dp),
                 horizontalArrangement = Arrangement.End) {
                 Text(
-                    text = value,
+                    text = formatedValue,
                     style = MaterialTheme.typography.bodyLarge,
                     fontSize = 20.sp,
                     modifier = Modifier
@@ -152,58 +152,6 @@ class PayCheckScreen : ComponentActivity() {
                 .padding(start = 30.dp)
         )
     }
-
-
-        @Composable
-        fun bottomButtons(){
-            Row {
-                Button(
-                    onClick = { /*TODO*/ },
-                    modifier = Modifier
-                        .width(90.dp)
-                        .height(35.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF0E3E3E)
-                    ),
-                    shape = RoundedCornerShape(
-                        topStart = 10.dp,
-                        topEnd = 10.dp,
-                        bottomStart = 10.dp,
-                        bottomEnd = 10.dp
-                    ),
-
-                    ) {
-                    Text(
-                        text = "Print",
-                        style = MaterialTheme.typography.bodyLarge,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                }
-                Spacer(modifier = Modifier.padding(end=90.dp))
-                Button(
-                    onClick = { /*TODO*/ },
-                    modifier = Modifier
-                        .width(90.dp)
-                        .height(35.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF0E3E3E)
-                    ),
-                    shape = RoundedCornerShape(
-                        topStart = 10.dp,
-                        topEnd = 10.dp,
-                        bottomStart = 10.dp,
-                        bottomEnd = 10.dp
-                    ),
-
-                    ) {
-                    Text(
-                        text = "Draft",
-                        style = MaterialTheme.typography.bodyLarge,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                }
-            }
-        }
+fun formatToTwoDecimalPlaces(value: Double): String {
+    return String.format("%.2f", value)
 }

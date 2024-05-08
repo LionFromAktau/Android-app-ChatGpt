@@ -15,7 +15,8 @@ class DataBase{
             rent = 200.0,
             stayPeriod = 12,
             tips = 50.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -29,7 +30,8 @@ class DataBase{
             rent = 100.0,
             stayPeriod = 12,
             tips = 60.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 3,
@@ -42,7 +44,8 @@ class DataBase{
             rent = 195.0,
             stayPeriod = 12,
             tips = 45.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -56,7 +59,8 @@ class DataBase{
             rent = 80.0,
             stayPeriod = 12,
             tips = 40.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -70,7 +74,8 @@ class DataBase{
             rent = 325.0,
             stayPeriod = 12,
             tips = 100.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -84,7 +89,8 @@ class DataBase{
             rent = 250.0,
             stayPeriod = 12,
             tips = 70.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -98,7 +104,8 @@ class DataBase{
             rent = 275.0,
             stayPeriod = 12,
             tips = 75.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -112,7 +119,8 @@ class DataBase{
             rent = 220.0,
             stayPeriod = 12,
             tips = 60.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -126,7 +134,8 @@ class DataBase{
             rent = 300.0,
             stayPeriod = 12,
             tips = 90.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -140,7 +149,8 @@ class DataBase{
             rent = 225.0,
             stayPeriod = 12,
             tips = 50.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -154,7 +164,8 @@ class DataBase{
             rent = 350.0,
             stayPeriod = 12,
             tips = 100.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -168,7 +179,8 @@ class DataBase{
             rent = 200.0,
             stayPeriod = 12,
             tips = 50.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -182,7 +194,8 @@ class DataBase{
             rent = 250.0,
             stayPeriod = 12,
             tips = 60.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -196,7 +209,8 @@ class DataBase{
             rent = 225.0,
             stayPeriod = 12,
             tips = 55.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -210,7 +224,8 @@ class DataBase{
             rent = 200.0,
             stayPeriod = 12,
             tips = 50.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -224,7 +239,8 @@ class DataBase{
             rent = 190.0,
             stayPeriod = 12,
             tips = 45.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -238,7 +254,8 @@ class DataBase{
             rent = 180.0,
             stayPeriod = 12,
             tips = 40.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -252,7 +269,8 @@ class DataBase{
             rent = 210.0,
             stayPeriod = 12,
             tips = 60.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -266,7 +284,8 @@ class DataBase{
             rent = 250.0,
             stayPeriod = 12,
             tips = 70.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -280,7 +299,8 @@ class DataBase{
             rent = 280.0,
             stayPeriod = 12,
             tips = 80.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -294,7 +314,8 @@ class DataBase{
             rent = 150.0,
             stayPeriod = 12,
             tips = 100.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
 
@@ -309,7 +330,8 @@ class DataBase{
             rent = 220.0,
             stayPeriod = 12,
             tips = 65.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
 
         State(
@@ -323,7 +345,8 @@ class DataBase{
             rent = 240.0,
             stayPeriod = 12,
             tips = 70.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 24,
@@ -336,7 +359,8 @@ class DataBase{
             rent = 175.0,
             stayPeriod = 12,
             tips = 45.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 25,
@@ -349,7 +373,8 @@ class DataBase{
             rent = 210.0,
             stayPeriod = 12,
             tips = 50.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 26,
@@ -362,7 +387,8 @@ class DataBase{
             rent = 200.0,
             stayPeriod = 12,
             tips = 50.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 27,
@@ -375,7 +401,8 @@ class DataBase{
             rent = 200.0,
             stayPeriod = 12,
             tips = 50.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 28,
@@ -388,7 +415,8 @@ class DataBase{
             rent = 300.0,
             stayPeriod = 12,
             tips = 100.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 29,
@@ -401,7 +429,8 @@ class DataBase{
             rent = 250.0,
             stayPeriod = 12,
             tips = 60.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 30,
@@ -414,7 +443,8 @@ class DataBase{
             rent = 310.0,
             stayPeriod = 12,
             tips = 80.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 31,
@@ -427,7 +457,8 @@ class DataBase{
             rent = 180.0,
             stayPeriod = 12,
             tips = 50.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 32,
@@ -440,7 +471,8 @@ class DataBase{
             rent = 400.0,
             stayPeriod = 12,
             tips = 150.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 33,
@@ -453,7 +485,8 @@ class DataBase{
             rent = 225.0,
             stayPeriod = 12,
             tips = 60.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 34,
@@ -466,7 +499,8 @@ class DataBase{
             rent = 200.0,
             stayPeriod = 12,
             tips = 50.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 35,
@@ -479,7 +513,8 @@ class DataBase{
             rent = 220.0,
             stayPeriod = 12,
             tips = 55.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 36,
@@ -492,7 +527,8 @@ class DataBase{
             rent = 190.0,
             stayPeriod = 12,
             tips = 40.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 37,
@@ -505,7 +541,8 @@ class DataBase{
             rent = 300.0,
             stayPeriod = 12,
             tips = 75.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 38,
@@ -518,7 +555,8 @@ class DataBase{
             rent = 225.0,
             stayPeriod = 12,
             tips = 60.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 39,
@@ -531,7 +569,8 @@ class DataBase{
             rent = 250.0,
             stayPeriod = 12,
             tips = 65.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 40,
@@ -544,7 +583,8 @@ class DataBase{
             rent = 210.0,
             stayPeriod = 12,
             tips = 55.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 41,
@@ -557,7 +597,8 @@ class DataBase{
             rent = 190.0,
             stayPeriod = 12,
             tips = 40.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 42,
@@ -570,7 +611,8 @@ class DataBase{
             rent = 220.0,
             stayPeriod = 12,
             tips = 60.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 43,
@@ -583,7 +625,8 @@ class DataBase{
             rent = 250.0,
             stayPeriod = 12,
             tips = 70.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 44,
@@ -596,7 +639,8 @@ class DataBase{
             rent = 200.0,
             stayPeriod = 12,
             tips = 50.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 45,
@@ -609,7 +653,8 @@ class DataBase{
             rent = 250.0,
             stayPeriod = 12,
             tips = 65.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 46,
@@ -622,7 +667,8 @@ class DataBase{
             rent = 240.0,
             stayPeriod = 12,
             tips = 70.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 47,
@@ -635,7 +681,8 @@ class DataBase{
             rent = 300.0,
             stayPeriod = 12,
             tips = 100.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 48,
@@ -648,7 +695,8 @@ class DataBase{
             rent = 180.0,
             stayPeriod = 12,
             tips = 45.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 49,
@@ -661,7 +709,8 @@ class DataBase{
             rent = 220.0,
             stayPeriod = 12,
             tips = 55.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         ),
         State(
             stateId = 50,
@@ -674,7 +723,8 @@ class DataBase{
             rent = 190.0,
             stayPeriod = 12,
             tips = 40.0,
-            hoursWorkedPerWeek = 40
+            hoursWorkedPerWeek = 40,
+            overTime = 0
         )
     )
 }

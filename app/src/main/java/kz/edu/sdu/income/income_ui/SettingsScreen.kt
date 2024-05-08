@@ -27,7 +27,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.KeyboardArrowDown
+import androidx.compose.material.icons.rounded.KeyboardArrowLeft
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -57,8 +59,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import kz.edu.sdu.income.R
 import kz.edu.sdu.income.ui.theme.IncomeTheme
+import kz.edu.sdu.income.viewModel.IncomeViewModel
 
 val stateList = listOf(
     "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
@@ -72,27 +79,22 @@ val stateList = listOf(
     "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington",
     "West Virginia", "Wisconsin", "Wyoming"
 )
-class SettingsScreen() : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            IncomeTheme {
-                Surface {
-                    SettingsApp()
-                }
-            }
+@Composable
+fun SettingsScreen(navController: NavController, viewModel: IncomeViewModel) {
+    IncomeTheme {
+        Surface   {
+            SettingsApp(navController = navController, viewModel = viewModel)
         }
     }
-
-    @Preview(showSystemUi = true)
+}
+    
     @Composable
-    fun SettingsApp() {
-        var state by remember { mutableStateOf("") }
-        var federalTax by remember { mutableStateOf("") }
-        var stateTax by remember { mutableStateOf("") }
-        var tips by remember { mutableStateOf("") }
-        var rent by remember { mutableStateOf("") }
-        var periodOfStay by remember { mutableStateOf("") }
+    fun SettingsApp(navController: NavController, viewModel: IncomeViewModel) {
+        var federalTax by viewModel.federalTax
+        var stateTax by viewModel.stateTax
+        var tips by viewModel.tips
+        var rent by viewModel.rent
+        var periodOfStay by viewModel.periodOfStay
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -108,7 +110,7 @@ class SettingsScreen() : ComponentActivity() {
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    BackButton()
+                    BackButton(navController)
                     Spacer(modifier = Modifier.padding(top = 30.dp))
                     Text(
                         text = "Payroll",
@@ -120,34 +122,30 @@ class SettingsScreen() : ComponentActivity() {
                     )
                     Spacer(modifier = Modifier.padding(top = 40.dp))
                     Column {
-                        StateSelector(text = "State", stateList = stateList)
+                        StateSelector(text = "State", stateList = stateList, viewModel)
 
                         Spacer(modifier = Modifier.padding(top = 20.dp))
-                        PayrollRow(text = "Federal Tax", value = federalTax) { newValue ->
-                            federalTax = newValue
+                        PayrollRow(text = "Federal Tax", value = federalTax, ok = true) { newValue ->
+                             viewModel.updateFederalTax(newValue)
                         }
                         Spacer(modifier = Modifier.padding(top = 20.dp))
-                        PayrollRow(text = "State Tax", value = stateTax) { newValue ->
-                            stateTax = newValue
+                        PayrollRow(text = "State Tax", value = stateTax, ok = true) { newValue ->
+                            viewModel.updateStateTax(newValue)
                         }
                         Spacer(modifier = Modifier.padding(top = 20.dp))
-                        PayrollRow(text = "Tips", value = tips) { newValue ->
-                            tips = newValue
+                        PayrollRow(text = "Tips", value = tips, ok = false) { newValue ->
+                            viewModel.updateTips(newValue)
                         }
                         Spacer(modifier = Modifier.padding(top = 20.dp))
-                        PayrollRow(text = "Period of Stay", value = stateTax) { newValue ->
-                            stateTax = newValue
+                        PayrollRow(text = "Period of Stay", value = periodOfStay, ok = false) { newValue ->
+                            viewModel.updatePeriodOfStay(newValue)
                         }
                         Spacer(modifier = Modifier.padding(top = 20.dp))
-                        PayrollRow(text = "Rent", value = stateTax) { newValue ->
-                            stateTax = newValue
-                        }
-                        Spacer(modifier = Modifier.padding(top = 20.dp))
-                        PayrollRow(text = "Tips", value = stateTax) { newValue ->
-                            stateTax = newValue
+                        PayrollRow(text = "Rent", value = rent, ok = false) { newValue ->
+                            viewModel.updateRent(newValue)
                         }
                         Spacer(modifier = Modifier.padding(top=40.dp))
-                        SaveButton()
+                        SaveButton(navController)
                     }
                 }
             }
@@ -158,6 +156,7 @@ class SettingsScreen() : ComponentActivity() {
     fun PayrollRow(
         text: String,
         value: String,
+        ok : Boolean,
         onValueChange: (String) -> Unit
     ) {
         Row(
@@ -208,35 +207,24 @@ class SettingsScreen() : ComponentActivity() {
                         bottomStart = 12.dp,
                         bottomEnd = 12.dp
                     ),
+                    readOnly = ok,
+                    placeholder = {
+                                  Text("Type or select")
+                    },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                 )
             }
         }
     }
 
-//    @Preview(showSystemUi = true)/
-//    @Composable
-//    fun DropApp() {
-//        val text = "State"
-//        var state by remember {
-//            mutableStateOf("South Caroline")
-//        }
-//        Box(
-//            modifier = Modifier
-//                .fillMaxSize()
-//                .background(Color(0xFF0E3E3E))
-//        ) {
-//            StateSelector(text = text, stateList = stateList)
-//        }
-//    }
-
     @Composable
     fun StateSelector(
         text : String,
         stateList: List<String>,
+        viewModel: IncomeViewModel
     ) {
         var showDialog by remember { mutableStateOf(false) }
-        var selectedState by remember { mutableStateOf("Select state") }
+        var selectedState by viewModel.state
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -292,7 +280,8 @@ class SettingsScreen() : ComponentActivity() {
                         title = "Select a State",
                         stateList = stateList,
                         onStateSelected = { selected ->
-                            selectedState = selected
+                            viewModel.updateState(selected)
+                            viewModel.updateDefaultStateData(selected)
                         },
                         onDismissRequest = {
                             showDialog = false
@@ -335,6 +324,7 @@ class SettingsScreen() : ComponentActivity() {
                 ) {
                     Text(
                         text = title,
+                        color = Color(0xFF0E3E3E),
                         fontSize = 20.sp,
                         style = MaterialTheme.typography.bodyLarge,
                         fontWeight = FontWeight.Bold)
@@ -366,14 +356,18 @@ class SettingsScreen() : ComponentActivity() {
     }
 
     @Composable
-    fun SaveButton() {
+    fun SaveButton(
+        navController: NavController
+    ) {
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier.fillMaxSize()
         ) {
             Button(
                 onClick = {
-                    startActivity(Intent(this@SettingsScreen, CalculatorScreen::class.java))
+                    navController.navigate("calculatorScreen"){
+                        popUpTo("mainScreen"){inclusive=true}
+                    }
                 },
                 modifier = Modifier
                     .width(100.dp)
@@ -524,23 +518,67 @@ class SettingsScreen() : ComponentActivity() {
 //            }
 //        }
 //    }
-}
 @Composable
-fun BackButton(){
+fun BackButton(navController: NavController){
+    var showOverlay by remember {
+        mutableStateOf(false)
+    }
     Row(
         modifier = Modifier.padding(top = 60.dp),
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.back_button),
+        Icon(imageVector = Icons.Rounded.KeyboardArrowLeft,
+            tint = Color.White,
             contentDescription = "back button",
             modifier = Modifier
-                .width(24.dp)
-                .height(24.dp)
+                .width(28.dp)
+                .height(28.dp)
                 .clickable {
-
+                    navController.navigate("mainScreen"){
+                        popUpTo("mainScreen"){inclusive=true}
+                    }
                 }
         )
-        Spacer(modifier = Modifier.padding(start = 150.dp, end = 164.dp))
+        Spacer(modifier = Modifier.padding(start = 150.dp, end = 140.dp))
+        Icon(
+            imageVector = Icons.Rounded.Info,
+            tint = Color.White,
+            contentDescription = "Info",
+            modifier = Modifier
+                .width(28.dp)
+                .height(28.dp)
+                .clickable {
+                    showOverlay = true
+                }
+        )
+    }
+    if (showOverlay) {
+        FullScreenOverlay(onDismiss = {showOverlay = false})
+    }
+}
+
+@Composable
+fun FullScreenOverlay(onDismiss: () -> Unit) {
+    Box(
+        Modifier
+            .fillMaxSize()
+            .clickable(onClick = onDismiss),
+        contentAlignment = Alignment.Center
+    ) {
+        Card {
+            Column(
+                modifier = Modifier.padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text("Information about Payroll", style = MaterialTheme.typography.titleLarge)
+                Spacer(modifier = Modifier.height(20.dp))
+                Text("You can fill by yourself or you can calculate by default State average percentage or change default values too.")
+                Spacer(modifier = Modifier.height(20.dp))
+                Button(onClick = onDismiss) {
+                    Text("Close")
+                }
+            }
+        }
     }
 }
 

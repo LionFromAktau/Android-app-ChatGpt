@@ -50,6 +50,12 @@ android {
 }
 
 dependencies {
+//    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
+//    implementation("androidx.lifecycle:lifecycle-livedata:2.7.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation ("androidx.navigation:navigation-compose:2.4.0-alpha10")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+    implementation ("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
     implementation("androidx.compose.ui:ui-text-google-fonts:1.6.1")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
@@ -66,5 +72,8 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+    testImplementation ("org.mockito:mockito-core:3.3.3")
+    testImplementation ("com.google.truth:truth:1.1.3")
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
 
 }

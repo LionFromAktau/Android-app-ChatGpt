@@ -11,5 +11,6 @@ data class State(
     val rent: Double,
     val stayPeriod: Int,
     val tips: Double,
-    val hoursWorkedPerWeek: Int
+    val hoursWorkedPerWeek: Int,
+    val overTime : Int
 )

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Income</string>
+    <string name="chat_ai">Chat AI</string>
+    <string name="placeholder_message">Ask me anything ...</string>
 </resources>

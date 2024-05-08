@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="black_green">#0E3E3E</color>
+    <color name="light_green">#1C7B7B</color>
+    <color name="ai_message">#A9EEEE</color>
+    <color name="user_message">#BBDBDB</color>
+    <color name="placeholder_color">#D0D0D0</color>
 </resources>
